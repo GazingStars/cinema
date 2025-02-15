@@ -1,1 +1,25 @@
-<p>main-page-component works!</p>
+<div class="container py-5">
+    <h2 class="text-center mb-4">Каталог товаров</h2>
+
+    <div class="d-flex justify-content-center mb-4">
+        <button (click)="toggleVisibility()" class="btn btn-primary">Кликни на меня</button>
+    </div>
+    <div class="row row-cols-3 g-4">
+        @if (isVisible) {
+        @for (frut of fruts; track frut.id) {
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{frut.name}}</h5>
+                    <p class="card-text">{{frut.desc}}</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <span class="fw-bold">{{frut.price | currency:'RUB ':'symbol': '1.2-2'}}</span>
+                    <button class="btn btn-primary">В корзину</button>
+                </div>
+            </div>
+        </div>
+        }
+        }
+    </div>
+</div>

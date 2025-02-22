@@ -33,10 +33,38 @@
     <div class="grid">
       @for (movie of movies; track $index) {
       <div class="card">
-        <img [src]="movie.coverUrl" alt="Передача 1">
-        <h3>{{movie.nameRu}}</h3>
+        <img [src]="movie.posterUrlPreview" alt="Передача">
+        
       </div>
       }
+    </div>
+
+    <div class="custom-pagination d-flex justify-content-center align-items-center mt-5">
+      <button class="arrow prev" [disabled]="currentPage === 1" (click)="goPrevPage()">
+        &lsaquo;
+      </button>
+
+      <button class="page-num" *ngIf="currentPage - 1 > 0" (click)="selectPage(currentPage - 1)"
+        [disabled]="currentPage - 1 <= 0">
+        {{ currentPage - 1 }}
+      </button>
+
+      <button class="page-num active">
+        {{ currentPage }}
+      </button>
+
+      <button class="page-num" (click)="selectPage(currentPage + 1)" *ngIf="currentPage + 1 <= maxPage">
+        {{ currentPage + 1 }}
+      </button>
+
+      <button class="transparent-btn" *ngIf="!isSelectingPage" (click)="startSelectingPage()">...</button>
+
+      <input type="number" class="page-input" *ngIf="isSelectingPage" [(ngModel)]="selectedPage"
+        (keyup.enter)="confirmPageSelection()" (blur)="confirmPageSelection()" min="1" [max]="maxPage">
+
+      <button class="arrow next" [disabled]="currentPage === maxPage" (click)="goNextPage()">
+        &rsaquo;
+      </button>
     </div>
   </div>
 </section>

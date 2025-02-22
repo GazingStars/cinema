@@ -155,6 +155,13 @@ body {
   transition: transform 0.3s;
 }
 
+.card img {
+  width: 100%;       
+  height: 100%;       
+  object-fit: cover;  
+  display: block;     
+}
+
 .card:hover {
   transform: scale(1.05);
 }
@@ -167,6 +174,122 @@ body {
 .card h3 {
   padding: 15px;
   font-size: 1.2rem;
+}
+
+/* pagination */
+.custom-pagination {
+  align-items: center;
+  gap: 0.5rem;                 
+}
+
+.page-num {
+  min-width: 40px;             
+  height: 40px;                
+  border: 1px solid #007bff;
+  background-color: #fff;
+  color: #007bff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.page-num:hover {
+  background-color: #e6f0ff;
+}
+
+.page-num.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.page-input {
+  width: 50px;                     
+  height: 40px;                    
+  text-align: center;               
+  font-size: 1rem;                  
+  font-weight: 500;
+  border: 2px solid #007bff;        
+  border-radius: 6px;               
+  outline: none;                    
+  transition: all 0.3s ease-in-out;  
+  animation: fadeIn 0.2s ease-in-out;
+
+}
+
+.page-input:focus {
+  border-color: #00488f;            
+  box-shadow: 0 0 5px rgba(0, 72, 143, 0.5); 
+}
+
+.page-input:disabled {
+  background-color: #f0f0f0;        
+  color: #a0a0a0;                   
+  border-color: #ccc;               
+  cursor: not-allowed;               
+}
+
+.page-input.fade-out {
+  animation: fadeOut 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+  
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.transparent-btn {
+  background: none;      
+  border: none;         
+  color: inherit;        
+  font-size: inherit;    
+  cursor: pointer;       
+  padding: 0;            
+  outline: none;         
+  display: inline-flex;  
+  align-items: center;   
+  justify-content: center;
+  padding: 0 0.5rem;
+  color: #888;       
+  font-size: 1.1rem;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  color: #ccc;       
+  font-size: 1.5rem; 
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  color: #666;
+}
+
+.arrow:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.4;
 }
 
 /* footerPatr */

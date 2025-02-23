@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import {
   trigger,
   state,
@@ -12,7 +13,8 @@ import {
 
 @Component({
   selector: 'app-main-page-component',
-  imports: [CommonModule, FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './main-page-component.component.html',
   styleUrl: './main-page-component.component.scss',
   animations: [
@@ -70,7 +72,8 @@ export class MainPageComponentComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.rPoster = this.movies[this.randomIndex].coverUrl;
       this.animationState = 'visible';
-      this.randomIndex = this.randomIndex === this.movies.length - 1 ? 0 : this.randomIndex + 1;
+      this.randomIndex =
+        this.randomIndex === this.movies.length - 1 ? 0 : this.randomIndex + 1;
     }, 1000);
   }
 

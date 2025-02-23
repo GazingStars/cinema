@@ -1,1 +1,36 @@
-<p>detail-film works!</p>
+<div class="film-container" [ngStyle]="{'background-image': 'url(' + filmData.coverUrl + ')'}">
+    <div class="film-content">
+      <div class="film-poster">
+        <img [src]="filmData.posterUrl" [alt]="filmData.nameRu">
+      </div>
+  
+      <div class="film-info">
+        <img *ngIf="filmData.logoUrl" [src]="filmData.logoUrl" alt="Логотип" class="film-logo">
+  
+        @if (!filmData.logoUrl) {<h1 class="film-title">{{ filmData.nameRu }} ({{ filmData.year }})</h1>}
+        
+  
+        <p class="film-rating">
+          ⭐ {{ filmData.ratingKinopoisk }} / 10 | IMDb: {{ filmData.ratingImdb }}
+        </p>
+  
+        <p class="film-genres">
+          <span *ngFor="let genre of filmData.genres">{{ genre.genre }} </span>
+        </p>
+  
+        <p class="film-countries">
+          <span *ngFor="let country of filmData.countries">{{ country.country }}</span>
+        </p>
+  
+        <p class="film-age">Возрастной рейтинг: {{ filmData.ratingAgeLimits }}</p>
+  
+        <p class="film-description">{{ filmData.description }}</p>
+  
+        <div class="film-buttons">
+          <button class="watch-btn">🎬 Смотреть</button>
+          <button class="trailer-btn">📽️ Трейлер</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,8 +1,19 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { Routes } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { MainPageComponentComponent } from './main-page-component/main-page-component.component';
+import { DetailFilmComponent } from './detail-film/detail-film.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-import { routes } from './app.routes';
-
+const appRoutes: Routes = [
+  { path: '', component: MainPageComponentComponent },
+  { path: 'film/:id', component: DetailFilmComponent },
+];
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+  providers: [
+    provideRouter(appRoutes, withComponentInputBinding()),
+    provideHttpClient(),
+    provideAnimations(),
+  ],
 };

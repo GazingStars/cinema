@@ -30,9 +30,10 @@
 <section class="content">
   <div class="container">
     <h2>Популярные фильмы</h2>
-    <div class="grid">
+    <div class="grid">     
       @for (movie of movies; track $index) {
       <div class="card">
+        <a [routerLink]="['/film', movie.kinopoiskId]" class="full-link"></a>
         <img [src]="movie.posterUrlPreview" alt="Передача">
         
       </div>
